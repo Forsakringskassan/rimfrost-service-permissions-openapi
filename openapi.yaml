@@ -40,3 +40,5 @@ paths:
           description: Användaren hittades inte
         '500':
           description: Internt serverfel
+        '503':
+          description: Behörighetstjänsten är inte tillgänglig
