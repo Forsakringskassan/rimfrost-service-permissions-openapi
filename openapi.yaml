@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Permissions API
+  version: 1.0.0
+  description: API för att kontrollera permissions för en specificerad användare
+
+paths:
+  /{idTyp}/{idVarde}/hasSidPermission:
+    get:
+      tags: [ PermissionController ]
+      operationId: hasSidPermission
+      summary: Kontrollera om en användare har SID-behörighet
+      description: Returnerar om användaren, identifierad via angiven id-typ och id-värde, har SID-behörighet.
+      parameters:
+        - name: idTyp
+          in: path
+          required: true
+          description: Typ av identifierare som används för att identifiera användaren
+          schema:
+            type: string
+            example: kortnummer
+        - name: idVarde
+          in: path
+          required: true
+          description: Identifierarens värde, t.ex. ett kortnummer
+          schema:
+            type: string
+            example: "123456789"
+      responses:
+        '200':
+          description: Kontroll genomförd
+          content:
+            application/json:
+              schema:
+                type: boolean
+              example: true
+        '400':
+          description: Ogiltig idTyp eller idVarde
+        '404':
+          description: Användaren hittades inte
+        '500':
+          description: Internt serverfel
+        '503':
+          description: Behörighetstjänsten är inte tillgänglig
