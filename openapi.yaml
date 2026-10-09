@@ -5,27 +5,18 @@ info:
   description: API för att kontrollera permissions för en specificerad användare
 
 paths:
-  /{idTyp}/{idVarde}/hasSidPermission:
-    get:
+  /hasSidPermission:
+    post:
       tags: [ PermissionController ]
       operationId: hasSidPermission
       summary: Kontrollera om en användare har SID-behörighet
       description: Returnerar om användaren, identifierad via angiven id-typ och id-värde, har SID-behörighet.
-      parameters:
-        - name: idTyp
-          in: path
-          required: true
-          description: Typ av identifierare som används för att identifiera användaren
-          schema:
-            type: string
-            example: kortnummer
-        - name: idVarde
-          in: path
-          required: true
-          description: Identifierarens värde, t.ex. ett kortnummer
-          schema:
-            type: string
-            example: "123456789"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SidPermissionRequest'
       responses:
         '200':
           description: Kontroll genomförd
@@ -42,3 +33,20 @@ paths:
           description: Internt serverfel
         '503':
           description: Behörighetstjänsten är inte tillgänglig
+
+components:
+  schemas:
+    SidPermissionRequest:
+      type: object
+      required:
+        - idTyp
+        - idVarde
+      properties:
+        idTyp:
+          type: string
+          description: Typ av identifierare som används för att identifiera användaren
+          example: kortnummer
+        idVarde:
+          type: string
+          description: Identifierarens värde, t.ex. ett kortnummer
+          example: "123456789"
