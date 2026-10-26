@@ -4,6 +4,11 @@ on: [workflow_dispatch, workflow_call, push, pull_request]
 
 jobs:
   call-workflow:
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+      packages: read
     uses: Forsakringskassan/.github/.github/workflows/bundle-gradle-ci.yaml@ef33a09b7325753aed06a06d2300f08cd0191532 # temp branch
     secrets:
       PACKAGES_RW_ACTOR: ${{ secrets.PACKAGES_RW_ACTOR }}
