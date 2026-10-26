@@ -10,6 +10,3 @@ jobs:
       contents: read
       packages: read
     uses: Forsakringskassan/.github/.github/workflows/bundle-gradle-ci.yaml@ef33a09b7325753aed06a06d2300f08cd0191532 # temp branch
-    secrets:
-      PACKAGES_RW_ACTOR: ${{ secrets.PACKAGES_RW_ACTOR }}
-      PACKAGES_RW_TOKEN: ${{ secrets.PACKAGES_RW_TOKEN }}
