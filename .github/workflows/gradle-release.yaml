@@ -4,6 +4,9 @@ on: [workflow_dispatch]
  
 jobs:
   call-workflow:
+    permissions:
+      contents: write
+      packages: read
     uses: Forsakringskassan/.github/.github/workflows/bundle-gradle-release.yaml@ef33a09b7325753aed06a06d2300f08cd0191532 # temp branch
     secrets:
       PACKAGES_RW_ACTOR: ${{ secrets.PACKAGES_RW_ACTOR }}
