@@ -1,3 +1,12 @@
+## 0.0.2 (2026-10-28)
+
+### Bug Fixes
+
+-  Bump gradle version to 9.7.1 ([6c5e4](https://github.com/Forsakringskassan/rimfrost-service-permissions-openapi/commit/6c5e47e4181d210) Lars Persson)  
+
+### Other changes
+
+
 ## 0.0.1 (2026-10-26)
 
 ### Bug Fixes
